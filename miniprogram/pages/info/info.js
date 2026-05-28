@@ -6,7 +6,7 @@ import { showTab } from "../../utils/page";
 const share_text = text_cfg.app_name + ' - ' + text_cfg.info.share_tip;
 
 // const logo_img = "/pages/public/images/app_logo.png";
-const logo_img = "/pages/public/images/totoro_transparent_background.png";
+const logo_img = "https://maopu.anka1.top/app_logo.webp";
 
 import { signCosUrl } from "../../utils/common";
 
