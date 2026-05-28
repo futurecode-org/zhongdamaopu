@@ -8,9 +8,9 @@ module.exports = {
   // 版本号
   app_version: "v1.18.5",
   // 小程序appid
-  app_id: "wx5bd705b2bc91c73b",
+  app_id: "wx900a373be264fb5c",
   // EMAS空间ID
-  space_id: "mp-4bc42af8-4abd-490d-85dd-7cb5b9e58f5b",
+  space_id: "mp-23b0db29-f93e-4aa5-89f2-ff8a655e8485",
   // 服务空间 secret key
   space_secret: require('./appSecret').space_secret,
   // 服务空间地址Api Endpoint
@@ -23,24 +23,24 @@ module.exports = {
 
   // 科普页图片
   science_imgs: [
-    `https://cos.ap-guangzhou.myqcloud.com/maopu-1251740905/系统/科普1.png`,
-    `https://cos.ap-guangzhou.myqcloud.com/maopu-1251740905/系统/科普2.png`,
-    `https://cos.ap-guangzhou.myqcloud.com/maopu-1251740905/系统/科普3.png`,
-    `https://cos.ap-guangzhou.myqcloud.com/maopu-1251740905/系统/科普4.png`,
-    `https://cos.ap-guangzhou.myqcloud.com/maopu-1251740905/系统/科普5.png`
+    `https://mp-23b0db29-f93e-4aa5-89f2-ff8a655e8485.cdn.bspapp.com/系统/科普1.png`,
+    `https://mp-23b0db29-f93e-4aa5-89f2-ff8a655e8485.cdn.bspapp.com/系统/科普2.png`,
+    `https://mp-23b0db29-f93e-4aa5-89f2-ff8a655e8485.cdn.bspapp.com/系统/科普3.png`,
+    `https://mp-23b0db29-f93e-4aa5-89f2-ff8a655e8485.cdn.bspapp.com/系统/科普4.png`,
+    `https://mp-23b0db29-f93e-4aa5-89f2-ff8a655e8485.cdn.bspapp.com/系统/科普5.png`
   ],
 
   // 赞赏码图片
-  reward_img: `https://cos.ap-guangzhou.myqcloud.com/maopu-1251740905/系统/赞赏码.jpg`,
+  reward_img: `https://mp-23b0db29-f93e-4aa5-89f2-ff8a655e8485.cdn.bspapp.com/系统/赞赏码.jpg`,
   // 新猫问卷图片
-  feedback_wj_img: `https://cos.ap-guangzhou.myqcloud.com/maopu-1251740905/系统/新猫问卷.png`,
+  feedback_wj_img: `https://mp-23b0db29-f93e-4aa5-89f2-ff8a655e8485.cdn.bspapp.com/系统/新猫问卷.png`,
   // 小程序菊花码图片
-  mpcode_img: `https://cos.ap-guangzhou.myqcloud.com/maopu-1251740905/系统/菊花码.jpg`,
+  mpcode_img: `https://mp-23b0db29-f93e-4aa5-89f2-ff8a655e8485.cdn.bspapp.com/系统/菊花码.jpg`,
 
   // 徽章排行榜的数量榜logo
-  badge_rank_count_img: `https://cos.ap-guangzhou.myqcloud.com/maopu-1251740905/系统/badge_rank_count.png`,
+  badge_rank_count_img: `https://mp-23b0db29-f93e-4aa5-89f2-ff8a655e8485.cdn.bspapp.com/系统/badge_rank_count.png`,
   // 徽章排行榜的价值榜logo
-  badge_rank_score_img: `https://cos.ap-guangzhou.myqcloud.com/maopu-1251740905/系统/badge_rank_score.png`,
+  badge_rank_score_img: `https://mp-23b0db29-f93e-4aa5-89f2-ff8a655e8485.cdn.bspapp.com/系统/badge_rank_score.png`,
 
   // 猫猫领养状态字符串，对应数据库cat.adopt中的数字下标
   cat_status_adopt: ["未领养", "已领养", "寻找领养中"],
@@ -50,7 +50,7 @@ module.exports = {
   // 各种文字内容
   text: {
     // 小程序名
-    app_name: "笃行猫谱",
+    app_name: "砚湖喵影",
     // 首页，pages/genealogy/genealogy
     genealogy: {
       share_tip: "发现身边校园猫咪",
