@@ -1,10 +1,10 @@
 /**app.wxss**/
 page {
   /* 定义一些颜色变量 */
-  --color-primary-text: #92400E;
+  --color-primary-text: #21006d;
   --color-primary-dark: #003b6d;
-  --color-primary: #0088ff;
-  --color-primary-light: #fffced;
+  --color-primary: #66ccff;
+  --color-primary-light: #effaff;
 
   --color-white-dark: #fafafa;
 
