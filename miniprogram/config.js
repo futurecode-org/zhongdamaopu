@@ -125,8 +125,8 @@ module.exports = {
       ad_success_tip: "多谢喵(ฅ'ω'ฅ)!",
       ad_fail_tip: "没播完喵...",
       reward_tip_title: "投喂罐头",
-      reward_tip: "您的投喂及广告收入将用作猫猫救助，每月的收支都会在“笃行志愿服务队”公众号进行公开，感谢您对中大流浪猫的帮助与支持！\n喵(^･ｪ･^)",
-      reward_count_tip: "* 每月统计一次，在公众号公示，多谢晒（鞠躬）",
+      reward_tip: "您的投喂及广告收入将用作系统运营和猫猫救助，非常感谢您对流浪猫的帮助与支持！\n喵(^･ｪ･^)",
+      reward_count_tip: "* 不定期统计并更新至下方，多谢晒（鞠躬）",
       reward_title: "爱心捐款",
     },
     // 排行页，pages/info/photoRank/photoRank
@@ -142,9 +142,11 @@ module.exports = {
       feedback_tip_title: "留下反馈",
       feedback_tip: "每一条反馈我们都会认真看滴",
       new_cat_tip_title: "新的猫猫",
-      new_cat_tip: "提交猫谱中没有的猫猫信息，给猫猫上户口~",
+      new_cat_tip: "提交猫谱中没有的猫猫信息，给猫猫上户口~\n由于微信限制跳转，烦请复制链接到浏览器打开",
+      questionnaire_link: "https://umai.anka1.top/q/new-neko-questionnaire",
       contract_tip_title: "更多联系",
-      contract_tip: "有关猫猫信息添加、小程序的建议、照片维权、猫猫领养咨询等事项，请关注笃行志愿服务队公众号后留言，或邮件：dxzyfwd@163.com",
+      contract_tip: "有关猫猫信息添加、领养咨询、照片维权等事项，请邮件联系：maopu@anka1.top",
+      email_address: "maopu@anka1.top",
     },
     // 开发团队页，pages/info/devTeam/devTeam
     dev_team: {
@@ -184,7 +186,7 @@ module.exports = {
       success_title: "完成",
       expired_tip: "邀请链接已过期...请联系管理员~",
       already_tip: "你已经是特邀用户啦~",
-      success_tip: "`已成为特邀用户~",
+      success_tip: "已成为特邀用户~",
     },
   }
 }

@@ -19,7 +19,7 @@
     <text>{{text_cfg.feedback.new_cat_tip}}</text>
   </view>
   <view style='flex-basis:100%;'>
-    <button class="primary" bindtap='toNewCat'>点击填写</button>
+    <button class="primary" bindtap='copyQuestionnaireLink'>复制表单链接</button>
   </view>
 </view>
 
@@ -27,5 +27,8 @@
   <view class='title'>{{text_cfg.feedback.contract_tip_title}}</view>
   <view class='desc'>
     <text>{{text_cfg.feedback.contract_tip}}</text>
+  </view>
+  <view style='flex-basis:100%;'>
+    <button class="primary" bindtap='copyEmailAddress'>复制邮件地址</button>
   </view>
 </view>

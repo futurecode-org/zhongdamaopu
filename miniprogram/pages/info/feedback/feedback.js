@@ -38,6 +38,31 @@ Page({
     });
   },
 
+  copyText(textVale, title, content) {
+    // 复制链接到剪贴板
+    wx.setClipboardData({
+      data: textVale,
+      success: () => {
+        wx.showModal({
+          title: title,
+          content: content,
+          showCancel: false
+        })
+      },
+      fail: () => {
+        wx.showToast({ title: '操作失败', icon: 'none' })
+      }
+    })
+  },
+
+  copyQuestionnaireLink() {
+    this.copyText(text_cfg.feedback.questionnaire_link, "链接已复制", "请打开浏览器粘贴访问")
+  },
+
+  copyEmailAddress() {
+    this.copyText(text_cfg.feedback.email_address, "邮件地址已复制", "期待您的来信")
+  },
+
   /**
    * 用户点击右上角分享
    */
