@@ -189,4 +189,163 @@ module.exports = {
       success_tip: "已成为特邀用户~",
     },
   }
+};
+
+const REMOTE_TEXT_CONFIG_URL = "https://maopu.anka1.top/config_text.json";
+
+function isPlainObject(value) {
+  return value && typeof value === 'object' && value.constructor === Object;
 }
+
+function mergeDeep(target, source) {
+  if (Array.isArray(source)) {
+    return source.slice();
+  }
+  if (!isPlainObject(source)) {
+    return source;
+  }
+  const output = isPlainObject(target) ? { ...target } : {};
+  Object.keys(source).forEach((key) => {
+    const sourceValue = source[key];
+    const targetValue = output[key];
+    if (isPlainObject(sourceValue) && isPlainObject(targetValue)) {
+      output[key] = mergeDeep(targetValue, sourceValue);
+    } else if (isPlainObject(sourceValue)) {
+      output[key] = mergeDeep({}, sourceValue);
+    } else {
+      output[key] = sourceValue;
+    }
+  });
+  return output;
+}
+
+function applyRemoteConfig(remoteConfig) {
+  if (!isPlainObject(remoteConfig)) {
+    return;
+  }
+  Object.keys(remoteConfig).forEach((key) => {
+    if (key === 'text' && isPlainObject(remoteConfig.text)) {
+      module.exports.text = mergeDeep(module.exports.text, remoteConfig.text);
+    } else {
+      const remoteValue = remoteConfig[key];
+      const localValue = module.exports[key];
+      if (isPlainObject(remoteValue) && isPlainObject(localValue)) {
+        module.exports[key] = mergeDeep(localValue, remoteValue);
+      } else {
+        module.exports[key] = remoteValue;
+      }
+    }
+  });
+}
+
+function parseJsonWithComments(text) {
+  let inString = false;
+  let stringChar = '';
+  let inSingleLineComment = false;
+  let inMultiLineComment = false;
+  let escaped = false;
+  let result = '';
+
+  for (let i = 0; i < text.length; i += 1) {
+    const char = text[i];
+    const nextChar = text[i + 1];
+
+    if (inSingleLineComment) {
+      if (char === '\n' || char === '\r') {
+        inSingleLineComment = false;
+        result += char;
+      }
+      continue;
+    }
+
+    if (inMultiLineComment) {
+      if (char === '*' && nextChar === '/') {
+        inMultiLineComment = false;
+        i += 1;
+      }
+      continue;
+    }
+
+    if (inString) {
+      if (escaped) {
+        result += char;
+        escaped = false;
+      } else {
+        if (char === '\\') {
+          result += char;
+          escaped = true;
+        } else if (char === stringChar) {
+          result += char;
+          inString = false;
+          stringChar = '';
+        } else {
+          result += char;
+        }
+      }
+      continue;
+    }
+
+    if (char === '/' && nextChar === '/') {
+      inSingleLineComment = true;
+      i += 1;
+      continue;
+    }
+
+    if (char === '/' && nextChar === '*') {
+      inMultiLineComment = true;
+      i += 1;
+      continue;
+    }
+
+    if (char === '"' || char === "'") {
+      inString = true;
+      stringChar = char;
+      result += char;
+      continue;
+    }
+
+    result += char;
+  }
+
+  return JSON.parse(result);
+}
+
+module.exports.loadRemoteTextConfig = function () {
+  return new Promise((resolve) => {
+    if (typeof wx === 'undefined' || !wx.request) {
+      resolve(module.exports);
+      return;
+    }
+
+    wx.request({
+      url: REMOTE_TEXT_CONFIG_URL,
+      method: 'GET',
+      dataType: 'text',
+      timeout: 8000,
+      success(res) {
+        if (res.statusCode === 200 && typeof res.data === 'string') {
+          try {
+            const remoteConfig = parseJsonWithComments(res.data);
+            if (isPlainObject(remoteConfig)) {
+              applyRemoteConfig(remoteConfig);
+            } else {
+              console.warn('远程文字配置格式不合法，使用本地配置', remoteConfig);
+            }
+          } catch (err) {
+            console.warn('远程文字配置解析失败，使用本地配置', err && err.message ? err.message : err);
+          }
+        } else {
+          console.warn('远程文字配置加载失败，使用本地配置', res.statusCode, res.errMsg || res);
+        }
+        resolve(module.exports);
+      },
+      fail(err) {
+        console.warn('远程文字配置请求失败，使用本地配置', err && err.errMsg ? err.errMsg : err);
+        resolve(module.exports);
+      },
+      complete() {
+        console.log('远程文字配置请求完成');
+      },
+    });
+  });
+};

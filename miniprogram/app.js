@@ -1,9 +1,9 @@
 import { checkUpdateVersion, getDateWithDiffHours } from './utils/utils';
-import { app_version } from "./config";
+import config from './config';
 import MPServerless from '@alicloud/mpserverless-sdk';
 import { ensureCos } from './utils/common';
-import { app_id, space_id, space_secret, space_endpoint } from './config'
 import eventBus from './utils/eventBus';
+const { app_version, app_id, space_id, space_secret, space_endpoint } = config;
 const mpServerless = new MPServerless({
   uploadFile: wx.uploadFile,
   request: wx.request,
@@ -21,8 +21,13 @@ App({
     // 初始化 SDK
     mpServerless.init();
 
+    // 先启动远程文本配置加载
+    const loadConfigPromise = config.loadRemoteTextConfig();
+
     // 初始化 COS
     this.cos = await ensureCos();
+
+    await loadConfigPromise;
 
     // 检查版本
     checkUpdateVersion();
