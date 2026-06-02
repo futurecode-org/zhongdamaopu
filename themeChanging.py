@@ -10,6 +10,7 @@ import shutil
 # 此处填写目标颜色以及原主题颜色
 # 默认黄色是 '#ffd101' '#73A7DD'
 # '#ffd101' '#003B6D'
+# 已执行过一次替换：'#ffd101' -> '#66ccff'
 
 # 读取文件夹及其子文件中的图片并提取颜色值
 def extract_colors_from_folder(png_files):

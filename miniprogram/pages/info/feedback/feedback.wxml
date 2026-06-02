@@ -19,7 +19,7 @@
     <text>{{text_cfg.feedback.new_cat_tip}}</text>
   </view>
   <view style='flex-basis:100%;'>
-    <button class="primary" bindtap='copyQuestionnaireLink'>复制表单链接</button>
+    <button class="primary" bindtap='toNewCat'>显示表单码</button>
   </view>
 </view>
 
