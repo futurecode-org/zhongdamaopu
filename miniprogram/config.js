@@ -17,7 +17,7 @@ module.exports = {
   space_endpoint: "https://api.next.bspapp.com",
   use_private_tencent_cos: true,
   // 自定义 CDN 加速自定义域名，留空则不使用
-  cdn_cos_domain: "",
+  cdn_cos_domain: "maopu-1303950078.qcloud-cos.anka2.top",
   // 私有的腾讯云cos签名过期时间（秒）
   sign_expires_tencent_cos: 3600 * 2,
   // 图片选择数量限制
